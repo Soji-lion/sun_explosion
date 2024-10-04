@@ -7,6 +7,7 @@ Current features:
 	- the sun can freeze down (when exceeding 1 million "seconds until explosion"), unfinished
 
 TODO:
+
 	- finish supernova animation
 	- make sun "freeze" animation
 	- add chat feature
