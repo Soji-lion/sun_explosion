@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Sun Countdown</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body style="background-color:#02043f">
+<script>0</script>
+<div id="normal">
+  <div class="info">
+  <button  class="button-cool" onclick="increment()">Cool it down!</button>
+  <button  class="button-heat" onclick="decrement()">Add more heat!</button>
+  <span class="counter" id="counter">Seconds until Sun explodes:</span>
+</div>
+ <div class="sun"></div>
+</div>	
+<!--end of normal, beginning of cold-->
+<div id="cold" style="display: none">
+<h3>The sun was extingushed, we need to reignite it!</h3>
+  <button  class="button-heat" onclick="increment()">Reignite!</button>
+</div>
+<!--end of cold, beginning of hot-->
+<div id="hot" style="display: none">
+<h3>The sun exploded into supernova! We need to rebuild it piece by piece!</h3>
+  <button  class="button-cool" onclick="increment()">Rebuild the sun!</button>
+<div class="supernova">
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+<i></i>
+
+</div>
+</div>
+
+<a href="info.html" style="color: white; background-color: black; position: absolute; bottom: 1%">Documentation</a>
+<script>
+var r = document.querySelector(':root');
+
+    function increment(){
+const xttp = new XMLHttpRequest();
+xttp.open("GET", "increment.php");
+xttp.send();
+};
+
+    function decrement(){
+const xttp = new XMLHttpRequest();
+xttp.open("GET", "decrement.php");
+xttp.send();
+};
+
+const getCounter = () => {
+const xttp = new XMLHttpRequest();
+xttp.onload = function() {
+document.getElementById("counter").innerHTML="Seconds until Sun explodes: " + this.responseText;
+const hue = 230-((this.response)/(1000000/230));
+if (hue>230){hue=230;}
+r.style.setProperty('--yellow', 'hsl('+hue+', 100%, 50%)');
+r.style.setProperty('--orange', 'hsl('+hue-21+', 100%, 50%)');
+};
+xttp.open("GET", "getcounter.php");
+xttp.send();
+};
+
+const getState = () => {
+const xttp = new XMLHttpRequest();
+xttp.onload = function() {
+switch (this.response){
+ case '0':
+ case 0:
+ case "0":
+console.log("test");
+  document.getElementById("normal").style.display = 'block';
+  document.getElementById("hot").style.display = 'none';
+  document.getElementById("cold").style.display = 'none';
+  break;
+ case '1':
+  document.getElementById("normal").style.display = 'none';
+  document.getElementById("hot").style.display = 'block';
+  document.getElementById("cold").style.display = 'none';
+  break;
+ case '2':
+  document.getElementById("normal").style.display = 'none';
+  document.getElementById("hot").style.display = 'none';
+  document.getElementById("cold").style.display = 'block';
+  break;
+ default:
+console.log("test1");
+}
+}
+xttp.open("GET", "getstate.php");
+xttp.send();
+};
+
+
+setInterval(getCounter,100);
+setInterval(getState, 100);
+  </script>
+</body>
+</html>

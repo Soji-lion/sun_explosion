@@ -1,0 +1,60 @@
+@keyframes sun-animation {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.counter {
+  color: #ffffff;
+}
+.sun {
+  border-radius:50%;
+  height:200px;
+  width:200px;
+  background:orange;
+  box-shadow: 0 0 100px yellow,
+                0 0 200px orange,
+                0 0 400px orange,
+                0 0 400px orange,
+                0 0 500px yellow,
+                inset 0 0 80px yellow;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+}
+.info {
+  margin: auto;
+  text-align: center;
+}
+.button-cool {
+  background-color: #00b7b7; /* Light Blue */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.button-cool:hover {
+  background-color: #009b9b; /* Darker green on hover */
+}
+
+.button-cool:active {
+  background-color: #005050; /* Even darker green on click */
+}
+.button-heat {
+  background-color: #b73400; /* Green */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.button-heat:hover {
+  background-color: #9b2400; /* Darker green on hover */
+}
+
+.button-heat:active {
+  background-color: #602000; /* Even darker green on click */
+}
+
